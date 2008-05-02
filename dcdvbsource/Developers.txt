@@ -1,0 +1,43 @@
+This is a small walkthrough to the Tuning Plugins and the 
+Data Plugins for the DC-DVB Source.
+
+There are two different types of Plugins. One Type is for the
+Tuning and receiving the Transport Stream. The other Type is 
+for modifying the TS Data, controlling the Tuner Plugins and 
+controlling the Filtergraph. All Plugins are based on the COM
+Architecture. Why COM? Because it's flexible and can be easily
+extended. You can have as many Control Windows (Property Pages)
+as you want and if the API needs to be extended it can easily 
+be done by adding another Interface Definition. Just check out
+the Samples and you will see how easy it actually is :)
+
+Ok, let's start with the Tuning Plugins. Basically, a Tuning
+Plugin is taking a Tune Request and passing the Transport 
+Stream to the "Application". In this case the Application is
+the DC-DVB Source or the Channel Scanner. The Application 
+may get/set other Values from/to the Plugin, like Signal 
+Statistics or CI Commands. A Tuning Plugin must implement the 
+IDCDVBTuningPlugin Interface. Developers should use the 
+TDCDVBTuningPlugin Base Class instead of implementing the
+Interface on their own. The IDCDVBTuningPlugin interface is only 
+a List of IDCDVBTuningPluginDevice Interfaces, where each 
+IDCDVBTuningPluginDevice implementation represents one Device.
+(Again, Developers should't implement the IDCDVBTuningPluginDevice.
+Use the TDCDVBTuningPluginDevice in this case)
+For example, you are writing a Tuner Plugin for BDA Devices 
+and you have a DVB-S and a DVB-T Device connected, then you
+would create one IDCDVBTuningPlugin and add two IDCDVBTuningPluginDevice
+implementations to it. If the user needs to setup additional
+Parameters for the Device, you might want to add a Property
+Page for the TDCDVBTuningPluginDevice. Property Pages can be
+created from Forms or, to safe the Filesize, from Dialogs 
+from Resources. Take a look into the Samples and you will 
+see some Sample Code.
+
+The Data Plugins are working similar like Tuning Plugins, except
+that every Plugin contains only one Data Plugin and thus the List
+Interface implementation isn't present. Data Plugins are 
+responsible for modifying the Transport Stream, can map PID's 
+on the Demultiplexer, have access to the Filtergraph and can 
+access the IDCDVBTuningPluginDevice of a Tuning Plugin. The 
+Samples shows how these Plugins are working.

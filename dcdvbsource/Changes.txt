@@ -1,0 +1,321 @@
+v0.1.7 [CVS]
+
+- fixed non Decoder (e.g. Multiplexer) visible in Decoder List.
+
+- fixed Scanning Application doesn't respond when stopping the scan.
+
+- added H264/AAC Decoder selection to the Scanner. 
+  NOTE: H264 doesn't work when Timeshifting is enabled!
+
+- Channelscan can now detect H264/AAC Streams.
+
+- Added support for CoreAVC.
+
+- fixed wrong Size of Plugin Property Page
+
+- Added "Ignore Device ID" for Tunerselection in the Filter
+  (for USB Devices where the Device ID always changes)
+
+- fixed crash with WMP11 and IE7 Beta2
+
+- added Progressbar to Signal Quality/Strength
+
+- reordered Tabs on the Property Page
+
+- fixed EPG Details not showing up
+
+- added Filereader Device
+
+- added parsing of Premiere CIT (special EPG)
+
+- added "Cycle Button" to toggle between the last two tuned channels
+  and last to selected teletext pages
+
+- added Sequencehader parsing of H264
+
+- added very limited Overlay Mixer support
+
+- few other fixes and Code rewrites...
+
+
+
+v0.1.6 [2005-11-27]
+
+- fixed Teletext being drawn when disabled and thus causing stuttering Playback.
+
+- fixed DSMCC writing causing stuttering Playback.
+
+- fixed "Decoder" not flushing internal Buffers upon channel change.
+
+- fixed moving Player Window causing stuttering Playback in Streaming Mode.
+
+- added ffdshow to the Video Decoder List.
+
+- added ffdshow workarounds when used as Video Decoder. This means, the Video
+  Analyzer Filter will setup the Aspect Ratio in ffdshow manually and channel 
+  changes will Flush the ffdshow Buffer to remove the Garbage being displayed
+  after a change.
+
+- added executing of MHP Applications (needs MHP Addon).
+
+- added "Save to XML" to the EPG Property Page.
+
+- added Teletext Navigation using Mouseclicks on Videowindow.
+
+- fixed Buffersize Bug in Source Filter
+
+- fixed FileNotFound Exception being raised when moving the .dvb File while playing.
+
+- fixed possible Deadlock (Playback hangs) after Transponder Change. 
+  (Although it still sometimes Hangs. Seems like the MS MPEG-2 Demux can't Handle PID changes properly)
+
+- added IAMMediaContent Interface for the current Event as Title.
+
+- OSD now shows the entered Number from the Remote Control.
+
+- fixed Subtitles not disappearing after being disabled from the Menu.
+
+- fixed EPG/DSMCC and other PSI's not being updated because of a Payload Parser Bug.
+
+- fixed last Channel not tuned in with Timeshifting Enabled.
+
+- fixed Teletext showing the first Frames from the previous Channel upon Channel change.
+
+- fixed Teletext Numbers on the Remote being able to setup Pages < 100 and > 899.
+
+- added Option to change the Frames/s for the Teletext (Note: Higher Framerate = more CPU usage).
+
+- fixed a few BDA and Twinhan Plugin Bugs. (thx to C.H. and P.M.K.)
+
+- added Demultiplexer and StreamBuffer Engine Filters are loaded directly from DLL's when not registered to the System.
+
+
+v0.1.5 [2005-10-01]
+
+- TS Writer will now start writing the Stream from the first Syncbyte.
+
+- DSMCC PID's are now dynamicaly mapped and remapped. This fixes an issue with Providers changing
+  the PID(s) constantly.
+
+- added Option to set the PacketSize when streaming over LAN.
+
+- Direct Tuning Option in the Scanner affects now the Scanning too.
+
+- Fixed invalid NIT parsing on Astra.
+
+- added additional Descriptor Parsing.
+
+- fixed some Memory Leaks in internal Filters.
+
+- Added support for Device Drivers other than BDA. All Devices (including BDA) are now using a
+  COM based Plugin Archtiecture. 
+
+- Added Dran'n'Drop for .dvb File Extensions to the Channel Scan.
+
+- Added support for "boxed" Teletext Subtitles.
+
+- Teletext is now parsed directly from TS Packets instead of the Payload from the Demultiplexer.
+
+- Teletext Pages are now cached for faster access. This cache is cleared after changing to another Channel.
+
+- Added TrayIcon and Tray Window for faster access to Channels and Teletext.
+
+- reduced Delay for EPG Parsing from 100ms to 20ms.
+
+- added Parental Rating to EPG Property Page.
+
+- improved OSD Text Quality.
+
+- fixed sizing and Aspect Ratio issues with OSD, Subtitles and Teletext.
+
+- fixed corrupted Teletext Frame when showing the Teletext for the first Time.
+
+- fixed Bug with Buffersizes > 200k on the Source Filter.
+
+- DSMCC writing has been delayed to 1 Minute per TransactionID. 
+
+- fixed QuickAccess Window not destroying.
+
+- fixed another Memory leaks in Scanner and Filter.
+
+- Added Option to Double Size the Teletext.
+
+- fixed EPG Mapping Bug.
+
+- added Statistics Property Page.
+
+- added OSD Color Selection.
+
+- added Plugin API and Property Page to the Filter.
+
+- Tuning Plugins are now custom COM Objects which can include Property Pages.
+
+- Channel Scanner will now remember the last tuned Channel.
+
+- removed "Write TS to Disk" Option. The Transport Stream can now be saved from the Quick Access Dialog.
+
+- Added support for Character based DVB Subtitles.
+
+- DVB Subtitles should be working now.
+
+- Added Subtitle Selection to Property Page.
+
+- fixed Teletext Bug with multiple Magazines.
+
+- Added Option to capture the current Screen from the Remote.
+
+- Added Option to stretch the Teletext to an Aspectratio of 4:3.
+
+- Added ability to change Channels from the Numerical Keypad.
+
+- Teletext is now prebuffered even if it isn't visible.
+
+- fixed Teletext showing Garbage (because of the multiple Magazines Fix).
+
+- Added support for Teletext Fastext Links (the coloured Buttons on the Remote).
+
+- fixed OSD Text not being updated.
+
+- merged WMP Plugin with DVB Filter.
+
+- added .dvb Extension registration to WMP.
+
+- merged ChannelScan and DeviceReset with DVBFilter.
+
+- added "TV Info" to the WMP Plugin.
+
+- added PopupMenu to TrayIcon for Channel Selection
+
+
+v0.1.4 [2005-07-20]
+
+- Fixed EPG loading Bug.
+
+- improved and bugfixed Teletext. Supports now Double Height/Size, Conceal and Hold Mosaics and
+  antialiased Font.
+
+- added Teletext saving to Bitmap, VTX and plain Text.
+
+- Fixed a wrong SID mapping in the Channel Editor.
+
+- bugfixed losing Audiostream
+
+- bugfixed some Descriptors parsing that may have crashed the Channel Scanner
+
+- Renamed MHP Data/AIT Streams to Carousel Data/AIT Streams in the Channel Scan
+
+- Added Audio Type Definition to the Channel Scan.
+
+- Fixed ChannelScan didn't work with XP SP1.
+
+- Added Multicast to Network streaming.
+
+- bugfixed TS, PSI, Payload and Descriptor Parser. Shouldn't crash with invalid Data anymore.
+
+- Added Scanning from TS-File to Channel Scan.
+
+- Subtitles and DSMCC Streams are now identified. DSMCC Streams are passed to the DSMCC Parser. 
+  Subtitles aren'n parsed yet.
+
+- rewritten the Scanner and Filter. Stream Sources are now in an own Container which are streamed 
+  to the Stream Source Filter. This will make Timeshifting and playing from TS Files easier to 
+  implement.
+
+- Added back the buggy MS Network Provider. It's still throwing a NULL Pointer Exception, but 
+  this is now handled by the Filter and shouldn't lead to a crash. 
+
+- Tuning is now by default using the MS TuningSpaces on the Network Provider. This fixes the 
+  "cannot Tune to a Channel" Bug. Direct Tuning is still possible by enabling it in the 
+  Channel Scanner (Note: MS TuningSpaces needs ~2 Seconds to Tune the Hardware to the new 
+  Frequency, while Direct Tuning on the Hardware needs only half a second).
+
+- Split Scanning from Editing in the Channel Scanner. It's now also possible to Scan from a 
+  File or Network Stream.
+
+- Added (another) workaround to find Channels where not all needed Data is being transmitted.
+
+- Added a Simple Java Console Application that desscribes the internal Data Structure used for
+  saving the EPG.
+
+- Fixed Now and Next Events on the OSD. It should now really show the Current and Next Event and
+  not some other Events from teh future. In case Now isn't available, Next will be shown.
+
+- bugfixed PES Parser. Wasn't parsing all Subtitle Data.
+
+- bugfixed recording with AC3 Streams.
+
+- Added more Subtitle Informations to the Channel Editor.
+
+- A full Language Name is now displayed on the Stream Select instead of the Language Code.
+
+- GDI+ has been removed. Graphics are now drawn using WinAPI.
+
+- Added Frequency Editor to Channel Scan.
+
+- EPG Parsing has been put into a delay to save CPU. Packets are parsed every 100ms.
+
+- Fixed a few Bugs when parsing DSMCC.
+
+- completely rewritten the DSM-CC Parser. Two Layer Carousels are now supported as well as
+  dynamic content update.
+
+- added a Video Analyzer for Aspectratio detection (which is going to be used by the Subtitle 
+  Filter).
+
+- Subtitles Streams are now added to IAMStreamSelect. (NOTE: Subtitles are still not displayed yet!)
+
+- added basic WMP Plugin for Channel selection.
+
+
+v0.1.2 [2005-04-30]
+
+- IDCDVBSource now Exports an internal Buffer Format for the EPG instead of an untyped 
+  Pointer (which was a Pointer to a JvSimpleXML Instance). This improves the CPU Usage 
+  when Parsing and Loading the EPG a lot.
+
+- Fixed a few MHP Bugs. (thx to Peter Knecht)
+
+- added DVB-C and DVB-S Support.
+
+- Pins on the MPEG-2 Demultiplexer are now created on my own. This fixes a Bug with
+  XP MCE, because with MCE the default mappings of the Demux are different than on 
+  XP Pro.
+
+- added Streaming TS Server.
+
+- added option to write TS Stream to Disk.
+
+- added Logging.
+
+- bugfixed Tuning. The Filter uses now InterfaceLists for every BDA Interface instead
+  of only one mapping.
+
+- added option to change the ReferenceClock from the MPEG-2 Demux to the DirectSound 
+  Renderer. This fixes an issue with the kX-Drivers and 5.1 Streams being played as a 
+  2 Channel Stream.
+
+- added Support for Devices with each Part in an own Filter (Tuner/Receiver/Demod)
+
+- dropped MS Network Provider.
+
+- dropped XML for EPG. Uses now an internal Binary Format.
+
+- bugfixed TS Parsing Code.
+
+- improved ChannelScan. This Version is out of the specs, but allows to parse 
+  TS Streams with wrong TSID/ONID (like it's currently present in Milan/Italy).
+
+- bugfixed Reference Counting.
+
+- ChannelScan is now Multi Threaded.
+
+- added OSD.
+
+- added Recording.
+
+- and so much other Bugfixes...
+
+
+v0.1.0 [2005-01-22]
+
+- first public alpha Release.

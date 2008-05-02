@@ -1,0 +1,13 @@
+C:\Documents and Settings\Leith Bade\My Documents\Visual Studio 2005\Projects\mheg2xmltv\mheg2xmltv\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Leith Bade\My Documents\Visual Studio 2005\Projects\mheg2xmltv\mheg2xmltv\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Leith Bade\My Documents\Visual Studio 2005\Projects\mheg2xmltv\mheg2xmltv\bin\Debug\mheg2xmltv.exe
+C:\Documents and Settings\Leith Bade\My Documents\Visual Studio 2005\Projects\mheg2xmltv\mheg2xmltv\bin\Debug\mheg2xmltv.pdb
+C:\Documents and Settings\Leith Bade\My Documents\Visual Studio 2005\Projects\mheg2xmltv\mheg2xmltv\obj\Debug\mheg2xmltv.exe
+C:\Documents and Settings\Leith Bade\My Documents\Visual Studio 2005\Projects\mheg2xmltv\mheg2xmltv\obj\Debug\mheg2xmltv.pdb
+C:\Documents and Settings\Leith Bade\My Documents\Visual Studio 2005\Projects\mheg2xmltv\mheg2xmltv\bin\Release\mheg2xmltv.exe
+C:\Documents and Settings\Leith Bade\My Documents\Visual Studio 2005\Projects\mheg2xmltv\mheg2xmltv\bin\Release\mheg2xmltv.pdb
+C:\Documents and Settings\Leith Bade\My Documents\Visual Studio 2005\Projects\mheg2xmltv\mheg2xmltv\obj\Release\mheg2xmltv.exe
+C:\Documents and Settings\Leith Bade\My Documents\Visual Studio 2005\Projects\mheg2xmltv\mheg2xmltv\obj\Release\mheg2xmltv.pdb
+C:\Documents and Settings\Leith Bade\My Documents\Visual Studio 2005\Projects\mheg2xmltv\mheg2xmltv\bin\Debug\DirectShowLib-2005.dll
+C:\Documents and Settings\Leith Bade\My Documents\Visual Studio 2005\Projects\mheg2xmltv\mheg2xmltv\bin\Release\DirectShowLib-2005.dll
+C:\Documents and Settings\Leith Bade\My Documents\Visual Studio 2005\Projects\mheg2xmltv\mheg2xmltv\bin\Release\copying.txt

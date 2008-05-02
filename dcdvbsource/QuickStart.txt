@@ -1,0 +1,9 @@
+1) Execute "register.bat" in the "Filter" Directory
+2) Execute "register.bat" in the "Plugins" Directory
+3) Execute "ChannelScan.exe" in the "Filter" Directory
+4) Go to the "Channel Scan" Tab 
+5) Choose the Device and Frequency List you want to Scan
+6) Execute the Scan and wait for it to end
+7) Go to the "Decoder" Tab and choose an Audio and Video Decoder
+8) Save everything in to a .dvb File
+9) Open the previously saved .dvb File in your Media Player and Enjoy

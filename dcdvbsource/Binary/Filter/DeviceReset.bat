@@ -1,0 +1,1 @@
+@start rundll32 DCDVBSource.ax,DeviceReset "Conexant BDA DVB-T Tuner/Demod"

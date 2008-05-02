@@ -1,0 +1,24 @@
+- find a way to Flush the Playback when using the Stream Buffer Engine. 
+  Currently, it takes about 3-5 Seconds for a Channel Change. Or even better,
+  drop the Stream Buffer and use the Transport Stream for Time shifting. Thus, even
+  Subtitles would work.
+
+- implement ATSC tuning and parsing.
+
+- implement DVB-S DisEqC. 
+
+- add CI Support. (still no idea how to do that ...)
+
+- add recording to MPEG. (Need to write a Multiplexer for that)
+
+- add filtered TS recording.
+
+- extend the WMP Plugin to control/display EPG, Teletext ...
+
+- Add dynamic PMT remapping upon changes from the Provider.
+
+- Figure out why BDA Tunerequests doesn't work with some Devices.
+
+- implement an Additional Channel List with Index independent Numbering and Categories.
+
+- add a Quickrecording Button to the Remote.

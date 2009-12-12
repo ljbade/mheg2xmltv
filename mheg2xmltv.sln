@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual C# Express 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mheg2xmltv", "mheg2xmltv\mheg2xmltv.csproj", "{4AC15697-FD5D-4333-854D-C8EA2946EC3C}"
 EndProject
 Global

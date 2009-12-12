@@ -1,6 +1,6 @@
 /*    
     xml2mheg - A XmlTv grabber for Freeview NZ MHEG-5 EPG data
-    Copyright (C) 2008 Leith Bade
+    Copyright (C) 2008-2009 Leith Bade
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -37,14 +38,14 @@ namespace mheg2xmltv
                     Console.WriteLine();
                     switch (Environment.OSVersion.Platform)
                     {
-                        case PlatformID.Win32NT:
+                        /*case PlatformID.Win32NT:
                         case PlatformID.Win32Windows:
                             Console.WriteLine("input = path to a DC-DVB Source .dvb file or a path to a DSM-CC dump");
                             break;
 
                         case PlatformID.Unix:
                             Console.WriteLine("input = path to a channels.conf file or a path to a DSM-CC dump");
-                            break;
+                            break;*/
 
                         default:
                             Console.WriteLine("input = a path to a DSM-CC dump");
@@ -63,7 +64,7 @@ namespace mheg2xmltv
                 string inputFileName = args[0];
                 string outputFileName = args[1];
 
-                //Console.WriteLine("Info: Input = \"" + inputFileName + "\", output = \"" + outputFileName + "\".");
+                Debug.WriteLine("Info: Input = \"" + inputFileName + "\", output = \"" + outputFileName + "\".");
 
                 WriteXml(outputFileName, ReadData(inputFileName));
             }
@@ -80,7 +81,7 @@ namespace mheg2xmltv
 
         static TVChannel[] ReadData(string path)
         {
-            //Console.WriteLine("Info: Reading data from \"" + path + "\".");
+            Debug.WriteLine("Info: Reading data from \"" + path + "\".");
 
             List<TVChannel> channels = new List<TVChannel>();
 
@@ -88,7 +89,7 @@ namespace mheg2xmltv
 
             if (Directory.Exists(path))
             {
-                //Console.WriteLine("Info: Input is a directory so using file reader.");
+                Debug.WriteLine("Info: Input is a directory so using file reader.");
                 reader = new FileReader(path);
             }
             else
@@ -99,41 +100,41 @@ namespace mheg2xmltv
                     Environment.Exit(1);
                 }
 
-                //Console.WriteLine("Info: Input is a file so selecting DSM-CC grabber from OS type.");
+                Debug.WriteLine("Info: Input is a file so selecting DSM-CC grabber from OS type.");
 
                 switch (Environment.OSVersion.Platform)
                 {
-                    case PlatformID.Win32NT:
+                    /*case PlatformID.Win32NT:
                     case PlatformID.Win32Windows:
-                        //Console.WriteLine("Info: Running on Windows so using DC-DVB Source.");
+                        //Debug.WriteLine("Info: Running on Windows so using DC-DVB Source.");
                         reader = new DCDVBSourceReader(path);
                         break;
 
                     case PlatformID.Unix:
-                        //Console.WriteLine("Info: Running on Linux so using rb-download.");
+                        //Debug.WriteLine("Info: Running on Linux so using rb-download.");
                         reader = new RBDownload(path);
-                        break;
+                        break;*/
 
                     default:
-                        //Console.WriteLine("Info: Running on an unkown OS o using file reader.");
+                        Debug.WriteLine("Info: Running on an unkown OS so using file reader.");
                         reader = new FileReader(path);
                         break;
                 }
             }
 
-            //Console.WriteLine("Info: Getting list of dates.");
+            Debug.WriteLine("Info: Getting list of dates.");
 
             string[] folders = reader.GetCarouselDirectories("epg" + Path.DirectorySeparatorChar + "data");
 
             foreach (string folder in folders)
             {
-                //Console.WriteLine("Info: Getting list of channels for \"" + folder + "\".");
+                Debug.WriteLine("Info: Getting list of channels for \"" + folder + "\".");
 
                 string[] files = reader.GetCarouselFiles(folder);
 
                 foreach (string file in files)
                 {
-                    //Console.WriteLine("Info: Getting list of programmes for \"" + file + "\".");
+                    Debug.WriteLine("Info: Getting list of programmes for \"" + file + "\".");
 
                     string data;
 
@@ -146,14 +147,14 @@ namespace mheg2xmltv
                 }
             }
 
-            //Console.WriteLine("Info: Finished reading data.");
+            Debug.WriteLine("Info: Finished reading data.");
 
             return channels.ToArray();
         }
 
         static void WriteXml(string fileName, TVChannel[] channels)
         {
-            //Console.WriteLine("Info: Writing XML data to \"" + fileName + "\".");
+            Debug.WriteLine("Info: Writing XML data to \"" + fileName + "\".");
 
             Regex whitespace = new Regex(@"\s+");
             List<uint> pidList = new List<uint>();
@@ -163,11 +164,11 @@ namespace mheg2xmltv
             settings.NewLineOnAttributes = true;
             settings.Encoding = new UTF8Encoding(false); // Remove UTF-8 byte-order-mark
 
-            //Console.WriteLine("Info: Creating file \"" + fileName + "\".");
+            Debug.WriteLine("Info: Creating file \"" + fileName + "\".");
 
             using (XmlWriter xmlFile = XmlWriter.Create(fileName, settings))
             {
-                //Console.WriteLine("Info: Add tv tag.");
+                Debug.WriteLine("Info: Add tv tag.");
 
                 xmlFile.WriteStartDocument();
                 xmlFile.WriteStartElement("tv");
@@ -178,7 +179,7 @@ namespace mheg2xmltv
                 {
                     if (pidList.BinarySearch(channel.pid) < 0)
                     {
-                        //Console.WriteLine("Info: Add channel tag for " + channel.name +".");
+                        Debug.WriteLine("Info: Add channel tag for " + channel.name +".");
 
                         xmlFile.WriteStartElement("channel");
                         xmlFile.WriteAttributeString("id", channel.pid.ToString() + ".dvb.guide");
@@ -193,7 +194,7 @@ namespace mheg2xmltv
                         if (programme.title == null) // Skip empty programmes - why do they do this?
                             continue;
 
-                        //Console.WriteLine("Info: Add programme tag for " + programme.title + ".");
+                        Debug.WriteLine("Info: Add programme tag for " + programme.title + ".");
 
                         xmlFile.WriteStartElement("programme");
                         xmlFile.WriteAttributeString("start", programme.startDateTime.ToString("yyyyMMddHHmmss zzz").Replace(":", "")); // Remove : from timezone (grrr)
@@ -205,7 +206,7 @@ namespace mheg2xmltv
                         if (titlePieces.Length > 1)
                             xmlFile.WriteElementString("sub-title", whitespace.Replace(titlePieces[1].Trim(), " "));
 
-                        xmlFile.WriteElementString("desc", whitespace.Replace(programme.description, " ")); // Remove whitespace
+                        xmlFile.WriteElementString("desc", whitespace.Replace(programme.synopsis, " ")); // Remove whitespace
 
                         foreach (string icon in programme.icons)
                         {
@@ -250,12 +251,12 @@ namespace mheg2xmltv
                 xmlFile.Flush();
             }
 
-            //Console.WriteLine("Info: Finished writing XML data.");
+            Debug.WriteLine("Info: Finished writing XML data.");
         }
 
         static TVChannel ParseData(string data, string path)
         {
-            //Console.WriteLine("Info: Parsing data for \"" + path  + "\".");
+            Debug.WriteLine("Info: Parsing data for \"" + path  + "\".");
 
             int dataIndex = 0, entryIndex = 0;
             string entry = String.Empty;
@@ -274,6 +275,7 @@ namespace mheg2xmltv
             channel.reserved = Convert.ToUInt32(NextValue(entry, ref entryIndex)); // Unsure what this is
             channel.friendlyDate = NextValue(entry, ref entryIndex);
             channel.name = NextValue(entry, ref entryIndex);
+            channel.crid = NextValue(entry, ref entryIndex);
             channel.programCount = Convert.ToUInt32(NextValue(entry, ref entryIndex));
             
             channel.pid = Convert.ToUInt32(Path.GetFileName(path));
@@ -281,7 +283,7 @@ namespace mheg2xmltv
             // Get TV programme information
             channel.programmes = new TVProgramme[channel.programCount];
 
-            //Console.WriteLine("Info: Found channel " + channel.name + ".");
+            Debug.WriteLine("Info: Found channel " + channel.name + ".");
 
             for (int programIndex = 0; programIndex < channel.programCount; programIndex++)
             {
@@ -295,14 +297,31 @@ namespace mheg2xmltv
                 programme.stopTimeSeconds = Convert.ToUInt32(NextValue(entry, ref entryIndex));
                 programme.titleLineCount = Convert.ToUInt32(NextValue(entry, ref entryIndex));
                 programme.friendlyTime = NextValue(entry, ref entryIndex);
+                programme.reserved = Convert.ToUInt32(NextValue(entry, ref entryIndex)); // Don't know what this is - always 49
+                programme.crid = NextValue(entry, ref entryIndex);
                 programme.title = NextValue(entry, ref entryIndex);
-                programme.description = NextValue(entry, ref entryIndex);
+                programme.synopsis = NextValue(entry, ref entryIndex);
                 programme.iconCount = Convert.ToUInt32(NextValue(entry, ref entryIndex));
 
                 programme.icons = new string[programme.iconCount];
 
                 for (int iconIndex = 0; iconIndex < programme.iconCount; iconIndex++)
                     programme.icons[iconIndex] = NextValue(entry, ref entryIndex);
+
+                // I am guessing this is a count of related episodes for PVRs?
+                programme.episodeCount = Convert.ToUInt32(NextValue(entry, ref entryIndex));
+
+                programme.episodes = new TVEpisode[programme.episodeCount];
+
+                for (int episodeIndex = 0; episodeIndex < programme.episodeCount; episodeIndex++)
+                {
+                    programme.episodes[episodeIndex].reserved = Convert.ToUInt32(NextValue(entry, ref entryIndex)); // Don't know what this is - always 50
+                    programme.episodes[episodeIndex].crid = NextValue(entry, ref entryIndex);
+                    programme.episodes[episodeIndex].title = NextValue(entry, ref entryIndex);
+                    programme.episodes[episodeIndex].synopsis = NextValue(entry, ref entryIndex);
+                }
+
+                programme.reserved2 = Convert.ToUInt32(NextValue(entry, ref entryIndex)); //Don't know what this is - always 0
 
                 string folderName = Path.GetDirectoryName(path).Substring(Path.GetDirectoryName(path).LastIndexOf(Path.DirectorySeparatorChar) + 1);
 
@@ -314,17 +333,17 @@ namespace mheg2xmltv
 
                 channel.programmes[programIndex] = programme;
 
-                //Console.WriteLine("Info: Found programme " + programme.title + ".");
+                Debug.WriteLine("Info: Found programme " + programme.title + ".");
             }
 
-            //Console.WriteLine("Info: Finished parsing data.");
+            Debug.WriteLine("Info: Finished parsing data.");
 
             return channel;
         }
 
         static string NextEntry(string data, ref int index)
         {
-            //Console.WriteLine("Info: Getting entry at " + index + ".");
+            Debug.WriteLine("Info: Getting entry at " + index + ".");
 
             string remaining = data.Substring(index);
             int length = remaining.IndexOf('\x1C');
@@ -339,7 +358,7 @@ namespace mheg2xmltv
 
         static string NextValue(string entry, ref int index)
         {
-            //Console.WriteLine("Info: Getting value at " + index + ".");
+            Debug.WriteLine("Info: Getting value at " + index + ".");
 
             string remaining = entry.Substring(index);
             int length = remaining.IndexOf('\x1D');
@@ -358,6 +377,7 @@ namespace mheg2xmltv
         public uint reserved;
         public string friendlyDate;
         public string name;
+        public string crid;
         public uint programCount;
         public TVProgramme[] programmes;
         public uint pid;
@@ -370,11 +390,24 @@ namespace mheg2xmltv
         public uint stopTimeSeconds;
         public uint titleLineCount;
         public string friendlyTime;
+        public uint reserved;
+        public string crid;
         public string title;
-        public string description;
+        public string synopsis;
         public uint iconCount;
         public string[] icons;
+        public uint episodeCount;
+        public TVEpisode[] episodes;
+        public uint reserved2;
         public DateTime startDateTime;
         public DateTime stopDateTime;
+    }
+
+    struct TVEpisode
+    {
+        public uint reserved;
+        public string crid;
+        public string title;
+        public string synopsis;
     }
 }

@@ -1,6 +1,6 @@
 /*    
     xml2mheg - A XmlTv grabber for Freeview NZ MHEG-5 EPG data
-    Copyright (C) 2008 Leith Bade
+    Copyright (C) 2008-2009 Leith Bade
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ namespace mheg2xmltv
 
         public RBDownload(string path)
         {
-            //Console.WriteLine("Info: Grabbing data using rb-download");
+            Debug.WriteLine("Info: Grabbing data using rb-download");
             Process process = new Process();
             process.StartInfo = new ProcessStartInfo("rb-download", "-f " + path);
             process.Start();
@@ -51,26 +51,26 @@ namespace mheg2xmltv
 
             rootPath = Directory.GetDirectories(Environment.CurrentDirectory + Path.DirectorySeparatorChar + "services")[0];
 
-            //Console.WriteLine("Info: Finished grabbing data.");
+            Debug.WriteLine("Info: Finished grabbing data.");
         }
 
         public Stream GetCarouselFile(string path)
         {
-            //Console.WriteLine("Info: Getting file \"" + path + "\".");
+            Debug.WriteLine("Info: Getting file \"" + path + "\".");
 
             return new FileStream(Path.Combine(rootPath, path), FileMode.Open);
         }
 
         public string[] GetCarouselFiles(string path)
         {
-            //Console.WriteLine("Info: Getting file list for \"" + path + "\".");
+            Debug.WriteLine("Info: Getting file list for \"" + path + "\".");
 
             return Directory.GetFiles(Path.Combine(rootPath, path));
         }
 
         public string[] GetCarouselDirectories(string path)
         {
-            //Console.WriteLine("Info: Getting directories for \"" + path + "\".");
+            Debug.WriteLine("Info: Getting directories for \"" + path + "\".");
 
             return Directory.GetDirectories(Path.Combine(rootPath, path));
         }

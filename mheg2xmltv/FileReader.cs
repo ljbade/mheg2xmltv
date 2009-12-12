@@ -1,6 +1,6 @@
 /*    
     xml2mheg - A XmlTv grabber for Freeview NZ MHEG-5 EPG data
-    Copyright (C) 2008 Leith Bade
+    Copyright (C) 2008-2009 Leith Bade
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -29,28 +30,28 @@ namespace mheg2xmltv
 
         public FileReader(string rootPath)
         {
-            //Console.WriteLine("Info: Using a file reader");
+            Debug.WriteLine("Info: Using a file reader");
 
             this.rootPath = rootPath;
         }
 
         public Stream GetCarouselFile(string path)
         {
-            //Console.WriteLine("Info: Getting file \"" + path + "\".");
+            Debug.WriteLine("Info: Getting file \"" + path + "\".");
 
             return new FileStream(Path.Combine(rootPath, path), FileMode.Open);
         }
 
         public string[] GetCarouselFiles(string path)
         {
-            //Console.WriteLine("Info: Getting file list for \"" + path + "\".");
+            Debug.WriteLine("Info: Getting file list for \"" + path + "\".");
 
             return Directory.GetFiles(Path.Combine(rootPath, path));
         }
 
         public string[] GetCarouselDirectories(string path)
         {
-            //Console.WriteLine("Info: Getting directories for \"" + path + "\".");
+            Debug.WriteLine("Info: Getting directories for \"" + path + "\".");
 
             return Directory.GetDirectories(Path.Combine(rootPath, path));
         }

@@ -27,75 +27,65 @@ using DCDVBInterop;
 
 namespace mheg2xmltv
 {
-    class DCDVBSourceReader : IDSMCCReader
-    {
-        string rootPath;
+  class DCDVBSourceReader : AbstractReader
+  {
+    private string mhpDataDirName = null;
+    
+    public DCDVBSourceReader(string dvbFile)
+    {       
+      Debug.WriteLine("Info: Grabbing data using DC-DVB Source");
+      
+      IGraphBuilder graph = (IGraphBuilder)new FilterGraph();
+      DsError.ThrowExceptionForHR(graph.RenderFile(dvbFile, null));      
 
-        public DCDVBSourceReader(string dvbFile)
-        {
-            Debug.WriteLine("Info: Grabbing data using DC-DVB Source");
-            Console.WriteLine("Preparing to download data.");
+      IVideoWindow videoWindow = (IVideoWindow)graph;
+      DsError.ThrowExceptionForHR(videoWindow.put_AutoShow(OABool.False));
 
-            IGraphBuilder graph = (IGraphBuilder)new FilterGraph();
-            DsError.ThrowExceptionForHR(graph.RenderFile(dvbFile, null));
+      IEnumFilters filters;
+      DsError.ThrowExceptionForHR(graph.EnumFilters(out filters));
 
-            IVideoWindow videoWindow = (IVideoWindow)graph;
-            DsError.ThrowExceptionForHR(videoWindow.put_AutoShow(OABool.False));
+      IBaseFilter[] filter = new IBaseFilter[1];
+      IDVBSource dvbSource = null;
+      while (filters.Next(1, filter, IntPtr.Zero) == 0)
+      {
+        dvbSource = filter[0] as IDVBSource;
+        if (dvbSource != null)
+          break;
+      }
 
-            IEnumFilters filters;
-            DsError.ThrowExceptionForHR(graph.EnumFilters(out filters));
+      IMediaControl control = (IMediaControl)graph;
+      DsError.ThrowExceptionForHR(control.Run());
+            
+      dvbSource.put_ChannelSelected(0);
+      
+      // TODO get_MHPRoot returns null
+      //string mhpRootDir = null;
+      //dvbSource.get_MHPRoot(out mhpRootDir);      
+      string mhpRootDir = Path.GetDirectoryName(dvbFile) + Path.DirectorySeparatorChar + "MHPData";
+      
+      string channelName = null;
+      dvbSource.get_ChannelInfo(0, out channelName );
+      
+      mhpDataDirName = mhpRootDir + Path.DirectorySeparatorChar + channelName;
+      
+      if( Directory.Exists( mhpDataDirName ) )
+      {
+      	Directory.Delete( mhpDataDirName, true );
+      }
+      
+      checkDumpFileExists();
+            
+      setRootPath( mhpDataDirName );
 
-            IBaseFilter[] filter = new IBaseFilter[1];
-            IDVBSource dvbSource = null;
-            while (filters.Next(1, filter, IntPtr.Zero) == 0)
-            {
-                dvbSource = filter[0] as IDVBSource;
-                if (dvbSource != null)
-                    break;
-            }
+      DsError.ThrowExceptionForHR(control.StopWhenReady());
+      DsError.ThrowExceptionForHR(control.Stop());
 
-            IMediaControl control = (IMediaControl)graph;
-            DsError.ThrowExceptionForHR(control.Run());
-
-            dvbSource.put_ChannelSelected(0);
-            //dvbSource.get_MHPRoot(out rootPath);
-            rootPath = Directory.GetDirectories(Path.GetDirectoryName(dvbFile) + Path.DirectorySeparatorChar + "MHPData")[0];
-
-            Console.Write("Downloading data: 0% ");
-
-            for (int n = 10; n <= 100; n += 10)
-            {
-                Thread.Sleep(1000);
-                Console.Write(n + "% ");
-            }
-
-            Console.WriteLine(".");
-
-            DsError.ThrowExceptionForHR(control.StopWhenReady());
-            DsError.ThrowExceptionForHR(control.Stop());
-
-            Debug.WriteLine("Info: Finished grabbing data.");
-        }
-
-        public Stream GetCarouselFile(string path)
-        {
-            Debug.WriteLine("Info: Getting file \"" + path + "\".");
-
-            return new FileStream(Path.Combine(rootPath, path), FileMode.Open);
-        }
-
-        public string[] GetCarouselFiles(string path)
-        {
-            Debug.WriteLine("Info: Getting file list for \"" + path + "\".");
-
-            return Directory.GetFiles(Path.Combine(rootPath, path));
-        }
-
-        public string[] GetCarouselDirectories(string path)
-        {
-            Debug.WriteLine("Info: Getting directories for \"" + path + "\".");
-
-            return Directory.GetDirectories(Path.Combine(rootPath, path));
-        }
+      Debug.WriteLine("Info: Finished grabbing data.");
     }
+        
+    protected override bool dumpFileExists()
+    {
+      return Directory.Exists(mhpDataDirName);
+    }
+  }
 }

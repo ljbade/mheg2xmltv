@@ -48,15 +48,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DirectShowLib-2005, Version=2.0.0.0, Culture=neutral, PublicKeyToken=67e7b740cdfc2d3f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DirectShowLib\lib\DirectShowLib-2005.dll</HintPath>
+    <Reference Include="DirectShowLib-2005">
+      <HintPath>..\DirectShowLibV2-1\lib\DirectShowLib-2005.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractReader.cs" />
     <Compile Include="RBDownloadReader.cs" />
     <Compile Include="DCDVBSourceReader.cs" />
     <Compile Include="FileReader.cs" />

@@ -1,0 +1,1 @@
+This will add a "Un/Register DC-DVB Plugin" Shell Extension to the Explorer

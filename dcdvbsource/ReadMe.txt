@@ -1,8 +1,8 @@
 
 
-   DirectShow DVB Source Filter Version 0.1.7
+   DirectShow DVB Source Filter Version 0.1.5
 
-   (C) 2004-2006 Milenko "DCoder" Mitrovic
+   (C) 2004. 2005 Milenko "DCoder" Mitrovic
 
    Mail: dcoder@dsp-worx.de
    Web:  http://www.dsp-worx.de
@@ -19,7 +19,7 @@
      7) Tested Players
 
 
-   Date: May, 21. 2006
+   Date: October, 01. 2005
 
 
 
@@ -132,14 +132,12 @@ A: Yes, there are. There is one Option to set the Buffersize of Packets when str
 
 4) --- Licensing -----------------------------------------------------------------
 
-  This software is released together with the Source Code under the 
+  This software is provided 'as-is', without any expressed or implied warranty. In no 
+  event will the author(s) be held liable for any damages arising from the use of this 
+  software.
 
-  GNU GENERAL PUBLIC LICENSE VERSION 2
-
-  For more Information about this License read the attached "License.txt" File or
-  enter the following Link into your Web Browser 
-
-  http://www.gnu.org/copyleft/gpl.html
+  Permission is granted to anyone to use this software for personal purpose. If you use 
+  this software in a product, an acknowledgment by the author(s) is needed.
 
 
 5) --- Third Party Librarys ------------------------------------------------------
@@ -192,7 +190,6 @@ IStreamBufferMediaSeeking.GetAvailable(Earliest, Latest).
 - MPC -> no Problems, but needs to be stopped before closing the Stream with 
   Stream Buffer Engine (Time Shifting) Enabled. Also Languages/EPG Events aren't
   displayed in the Popupmenu.
-  EDIT: Newer Versions of MPC fails rendering the File.
 
 - MPlayer 6.4 -> same as MPC
 

@@ -25,54 +25,58 @@ using System.Threading;
 
 namespace mheg2xmltv
 {
-    class RBDownload : IDSMCCReader
+  class RBDownload : AbstractReader
+  {
+    private string dumpDir = null;
+    
+    public RBDownload(string path)
     {
-        private string rootPath;
+      dumpDir = Environment.CurrentDirectory + Path.DirectorySeparatorChar + "services";
+      
+      prepareDumpDir(dumpDir);
+      
+      Debug.WriteLine("Info: Grabbing data using rb-download");
+      Process process = new Process();
+      process.StartInfo = new ProcessStartInfo("rb-download", "-f " + path);
+      process.Start();
 
-        public RBDownload(string path)
-        {
-            Debug.WriteLine("Info: Grabbing data using rb-download");
-            Process process = new Process();
-            process.StartInfo = new ProcessStartInfo("rb-download", "-f " + path);
-            process.Start();
+      checkDumpFileExists();
 
-            Console.Write("Downloading data: 0% ");
+      process.Kill();
+      process.Close();
+      
+      setRootPath(Directory.GetDirectories(dumpDir)[0]);
 
-            for (int n = 10; n <= 100; n += 10)
-            {
-                Thread.Sleep(1000);
-                Console.Write(n + "% ");
-            }
-
-            Console.WriteLine(".");
-
-            process.Kill();
-            process.Close();
-
-            rootPath = Directory.GetDirectories(Environment.CurrentDirectory + Path.DirectorySeparatorChar + "services")[0];
-
-            Debug.WriteLine("Info: Finished grabbing data.");
-        }
-
-        public Stream GetCarouselFile(string path)
-        {
-            Debug.WriteLine("Info: Getting file \"" + path + "\".");
-
-            return new FileStream(Path.Combine(rootPath, path), FileMode.Open);
-        }
-
-        public string[] GetCarouselFiles(string path)
-        {
-            Debug.WriteLine("Info: Getting file list for \"" + path + "\".");
-
-            return Directory.GetFiles(Path.Combine(rootPath, path));
-        }
-
-        public string[] GetCarouselDirectories(string path)
-        {
-            Debug.WriteLine("Info: Getting directories for \"" + path + "\".");
-
-            return Directory.GetDirectories(Path.Combine(rootPath, path));
-        }
+      Debug.WriteLine("Info: Finished grabbing data.");
+    } 
+        
+    protected override bool dumpFileExists()
+    {
+      return Directory.GetDirectories(dumpDir).Length > 0;
     }
+    
+    // The dump dir is created where the input path file
+    private void prepareDumpDir(string dumpDir)
+    {
+      if( !Directory.Exists( dumpDir ) )
+      {
+        Directory.CreateDirectory( dumpDir );
+      }
+      else
+      { 
+        // TODO find a way to get the root directory so we don't need to delete directories.
+        string[] dumpDirectories = Directory.GetDirectories(dumpDir);
+        foreach(string dirFound in dumpDirectories)
+        {
+          Directory.Delete(dirFound, true);
+        }
+        string[] allFilesFound = Directory.GetFiles(dumpDir);
+        foreach(string fileFound in allFilesFound)
+        {
+          File.Delete(fileFound);
+        }
+      }
+    }
+  } 
+  
 }

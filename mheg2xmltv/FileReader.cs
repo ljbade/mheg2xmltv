@@ -24,36 +24,17 @@ using System.Text;
 
 namespace mheg2xmltv
 {
-    class FileReader : IDSMCCReader
+  class FileReader : AbstractReader
+  {
+    public FileReader(string rootPath)
     {
-        private string rootPath;
-
-        public FileReader(string rootPath)
-        {
-            Debug.WriteLine("Info: Using a file reader");
-
-            this.rootPath = rootPath;
-        }
-
-        public Stream GetCarouselFile(string path)
-        {
-            Debug.WriteLine("Info: Getting file \"" + path + "\".");
-
-            return new FileStream(Path.Combine(rootPath, path), FileMode.Open);
-        }
-
-        public string[] GetCarouselFiles(string path)
-        {
-            Debug.WriteLine("Info: Getting file list for \"" + path + "\".");
-
-            return Directory.GetFiles(Path.Combine(rootPath, path));
-        }
-
-        public string[] GetCarouselDirectories(string path)
-        {
-            Debug.WriteLine("Info: Getting directories for \"" + path + "\".");
-
-            return Directory.GetDirectories(Path.Combine(rootPath, path));
-        }
+      Debug.WriteLine("Info: Using a file reader");
+      setRootPath(rootPath);
     }
+    
+    protected override bool dumpFileExists()
+    {
+      return true;
+    }
+  }
 }

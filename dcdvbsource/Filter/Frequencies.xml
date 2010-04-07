@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!--
+  - DVB/ATSC Frequency List -
+  
+  - DVB-T
+  
+	frequency: kHz
+	
+	bandwidth: MHz
+  
+  
+  - DVB-S
+  
+	frequency: kHz
+	
+	polarization: 
+	
+		0 = horizontal
+		1 = vertical
+		
+	symbolrate: ksb/s		
+  
+  
+  - DVB-C
+  
+	frequency: kHz
+		
+	symbolrate: ksb/s		
+  
+-->
+
+<networks>
+	<network name="DVBT">
+		<frequencies name="(All Frequencies)">
+			<frequency frequency="177500" bandwidth="7"/>
+			<frequency frequency="184500" bandwidth="7"/>
+			<frequency frequency="191500" bandwidth="7"/>
+			<frequency frequency="198500" bandwidth="7"/>
+			<frequency frequency="205500" bandwidth="7"/>
+			<frequency frequency="212500" bandwidth="7"/>
+			<frequency frequency="219500" bandwidth="7"/>
+			<frequency frequency="226500" bandwidth="7"/>
+			<frequency frequency="474000" bandwidth="8"/>
+			<frequency frequency="482000" bandwidth="8"/>
+			<frequency frequency="490000" bandwidth="8"/>
+			<frequency frequency="498000" bandwidth="8"/>
+			<frequency frequency="506000" bandwidth="8"/>
+			<frequency frequency="514000" bandwidth="8"/>
+			<frequency frequency="522000" bandwidth="8"/>
+			<frequency frequency="530000" bandwidth="8"/>
+			<frequency frequency="538000" bandwidth="8"/>
+			<frequency frequency="546000" bandwidth="8"/>
+			<frequency frequency="554000" bandwidth="8"/>
+			<frequency frequency="562000" bandwidth="8"/>
+			<frequency frequency="570000" bandwidth="8"/>
+			<frequency frequency="578000" bandwidth="8"/>
+			<frequency frequency="586000" bandwidth="8"/>
+			<frequency frequency="594000" bandwidth="8"/>
+			<frequency frequency="602000" bandwidth="8"/>
+			<frequency frequency="610000" bandwidth="8"/>
+			<frequency frequency="618000" bandwidth="8"/>
+			<frequency frequency="626000" bandwidth="8"/>
+			<frequency frequency="634000" bandwidth="8"/>
+			<frequency frequency="642000" bandwidth="8"/>
+			<frequency frequency="650000" bandwidth="8"/>
+			<frequency frequency="658000" bandwidth="8"/>
+			<frequency frequency="666000" bandwidth="8"/>
+			<frequency frequency="674000" bandwidth="8"/>
+			<frequency frequency="682000" bandwidth="8"/>
+			<frequency frequency="690000" bandwidth="8"/>
+			<frequency frequency="698000" bandwidth="8"/>
+			<frequency frequency="706000" bandwidth="8"/>
+			<frequency frequency="714000" bandwidth="8"/>
+			<frequency frequency="722000" bandwidth="8"/>
+			<frequency frequency="730000" bandwidth="8"/>
+			<frequency frequency="738000" bandwidth="8"/>
+			<frequency frequency="746000" bandwidth="8"/>
+			<frequency frequency="754000" bandwidth="8"/>
+			<frequency frequency="762000" bandwidth="8"/>
+			<frequency frequency="770000" bandwidth="8"/>
+			<frequency frequency="778000" bandwidth="8"/>
+			<frequency frequency="786000" bandwidth="8"/>
+			<frequency frequency="794000" bandwidth="8"/>
+			<frequency frequency="802000" bandwidth="8"/>
+			<frequency frequency="810000" bandwidth="8"/>
+			<frequency frequency="818000" bandwidth="8"/>
+			<frequency frequency="826000" bandwidth="8"/>
+			<frequency frequency="834000" bandwidth="8"/>
+			<frequency frequency="842000" bandwidth="8"/>
+			<frequency frequency="850000" bandwidth="8"/>
+			<frequency frequency="858000" bandwidth="8"/>
+		</frequencies>
+		<frequencies name="Australia - Brisbane">
+			<frequency frequency="177500" bandwidth="7"/>
+			<frequency frequency="191500" bandwidth="7"/>
+			<frequency frequency="219500" bandwidth="7"/>
+			<frequency frequency="226500" bandwidth="7"/>
+			<frequency frequency="585500" bandwidth="7"/>
+		</frequencies>
+		<frequencies name="Germany - Bonn">
+			<frequency frequency="514000" bandwidth="8"/>
+			<frequency frequency="538000" bandwidth="8"/>
+			<frequency frequency="594000" bandwidth="8"/>
+			<frequency frequency="650000" bandwidth="8"/>
+			<frequency frequency="698000" bandwidth="8"/>
+			<frequency frequency="826000" bandwidth="8"/>
+		</frequencies>
+		<frequencies name="Italy - Milan">
+			<frequency frequency="482000" bandwidth="8"/>
+			<frequency frequency="506000" bandwidth="8"/>
+			<frequency frequency="538000" bandwidth="8"/>
+			<frequency frequency="578000" bandwidth="8"/>
+			<frequency frequency="602000" bandwidth="8"/>
+			<frequency frequency="650000" bandwidth="8"/>
+			<frequency frequency="706000" bandwidth="8"/>
+			<frequency frequency="762000" bandwidth="8"/>
+			<frequency frequency="818000" bandwidth="8"/>
+			<frequency frequency="842000" bandwidth="8"/>
+		</frequencies>
+	</network>
+	<network name="DVBS">
+		<frequencies name="Astra 1B/1C/1E/1F/1G/1H/2C (19,2°E)">
+			<frequency frequency="10772000" polarization="0" symbolrate="22000"/>
+			<frequency frequency="10788000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="10818000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="10832000" polarization="0" symbolrate="22000"/>
+			<frequency frequency="10847000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="10862000" polarization="0" symbolrate="22000"/>
+			<frequency frequency="10877000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="10921000" polarization="0" symbolrate="22000"/>
+			<frequency frequency="10979000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="11038000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="11097000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="11156000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="11318000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="11509000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="11568000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="11597000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="11685000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="11720000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="11739000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="11759000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="11778000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="11798000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="11817000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="11837000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="11856000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="11875000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="11895000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="11914000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="11934000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="11954000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="11973000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="11993000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="12012000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="12032000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="12051000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="12071000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="12109000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="12129000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="12149000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="12168000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="12188000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="12207000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="12227000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="12266000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="12285000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="12304000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="12324000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="12344000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="12363000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="12383000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="12402000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="12422000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="12441000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="12460000" polarization="0" symbolrate="27500"/>
+			<frequency frequency="12480000" polarization="1" symbolrate="27500"/>
+			<frequency frequency="12515000" polarization="0" symbolrate="22000"/>
+			<frequency frequency="12522000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="12544000" polarization="0" symbolrate="22000"/>
+			<frequency frequency="12552000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="12574000" polarization="0" symbolrate="22000"/>
+			<frequency frequency="12581000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="12604000" polarization="0" symbolrate="22000"/>
+			<frequency frequency="12611000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="12633000" polarization="0" symbolrate="22000"/>
+			<frequency frequency="12640000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="12663000" polarization="0" symbolrate="22000"/>
+			<frequency frequency="12670000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="12692000" polarization="0" symbolrate="22000"/>
+			<frequency frequency="12699000" polarization="1" symbolrate="22000"/>
+			<frequency frequency="12722000" polarization="0" symbolrate="22000"/>
+			<frequency frequency="12729000" polarization="1" symbolrate="22000"/>
+		</frequencies>
+	</network>
+	<network name="DVBC">
+		<frequencies name="Europe - (All Frequencies)">
+			<frequency frequency="177500" symbolrate="6900"/>
+			<frequency frequency="184500" symbolrate="6900"/>
+			<frequency frequency="191500" symbolrate="6900"/>
+			<frequency frequency="198500" symbolrate="6900"/>
+			<frequency frequency="205500" symbolrate="6900"/>
+			<frequency frequency="212500" symbolrate="6900"/>
+			<frequency frequency="219500" symbolrate="6900"/>
+			<frequency frequency="226500" symbolrate="6900"/>
+			<frequency frequency="234000" symbolrate="6900"/>
+			<frequency frequency="242000" symbolrate="6900"/>
+			<frequency frequency="250000" symbolrate="6900"/>
+			<frequency frequency="258000" symbolrate="6900"/>
+			<frequency frequency="266000" symbolrate="6900"/>
+			<frequency frequency="274000" symbolrate="6900"/>
+			<frequency frequency="282000" symbolrate="6900"/>
+			<frequency frequency="290000" symbolrate="6900"/>
+			<frequency frequency="298000" symbolrate="6900"/>
+			<frequency frequency="306000" symbolrate="6900"/>
+			<frequency frequency="314000" symbolrate="6900"/>
+			<frequency frequency="322000" symbolrate="6900"/>
+			<frequency frequency="300000" symbolrate="6900"/>
+			<frequency frequency="338000" symbolrate="6900"/>
+			<frequency frequency="346000" symbolrate="6900"/>
+			<frequency frequency="354000" symbolrate="6900"/>
+			<frequency frequency="362000" symbolrate="6900"/>
+			<frequency frequency="370000" symbolrate="6900"/>
+			<frequency frequency="378000" symbolrate="6900"/>
+			<frequency frequency="386000" symbolrate="6900"/>
+			<frequency frequency="394000" symbolrate="6900"/>
+			<frequency frequency="402000" symbolrate="6900"/>
+			<frequency frequency="410000" symbolrate="6900"/>
+			<frequency frequency="418000" symbolrate="6900"/>
+			<frequency frequency="426000" symbolrate="6900"/>
+			<frequency frequency="434000" symbolrate="6900"/>
+			<frequency frequency="442000" symbolrate="6900"/>
+			<frequency frequency="450000" symbolrate="6900"/>
+			<frequency frequency="458000" symbolrate="6900"/>
+			<frequency frequency="466000" symbolrate="6900"/>
+			<frequency frequency="474000" symbolrate="6900"/>
+			<frequency frequency="482000" symbolrate="6900"/>
+			<frequency frequency="490000" symbolrate="6900"/>
+			<frequency frequency="506000" symbolrate="6900"/>
+			<frequency frequency="514000" symbolrate="6900"/>
+			<frequency frequency="522000" symbolrate="6900"/>
+			<frequency frequency="530000" symbolrate="6900"/>
+			<frequency frequency="538000" symbolrate="6900"/>
+			<frequency frequency="546000" symbolrate="6900"/>
+			<frequency frequency="554000" symbolrate="6900"/>
+			<frequency frequency="562000" symbolrate="6900"/>
+			<frequency frequency="570000" symbolrate="6900"/>
+			<frequency frequency="578000" symbolrate="6900"/>
+			<frequency frequency="586000" symbolrate="6900"/>
+			<frequency frequency="594000" symbolrate="6900"/>
+			<frequency frequency="602000" symbolrate="6900"/>
+			<frequency frequency="610000" symbolrate="6900"/>
+			<frequency frequency="618000" symbolrate="6900"/>
+			<frequency frequency="626000" symbolrate="6900"/>
+			<frequency frequency="634000" symbolrate="6900"/>
+			<frequency frequency="642000" symbolrate="6900"/>
+			<frequency frequency="650000" symbolrate="6900"/>
+			<frequency frequency="658000" symbolrate="6900"/>
+			<frequency frequency="666000" symbolrate="6900"/>
+			<frequency frequency="674000" symbolrate="6900"/>
+			<frequency frequency="682000" symbolrate="6900"/>
+			<frequency frequency="690000" symbolrate="6900"/>
+			<frequency frequency="698000" symbolrate="6900"/>
+			<frequency frequency="706000" symbolrate="6900"/>
+			<frequency frequency="714000" symbolrate="6900"/>
+			<frequency frequency="722000" symbolrate="6900"/>
+			<frequency frequency="730000" symbolrate="6900"/>
+			<frequency frequency="738000" symbolrate="6900"/>
+			<frequency frequency="746000" symbolrate="6900"/>
+			<frequency frequency="754000" symbolrate="6900"/>
+			<frequency frequency="762000" symbolrate="6900"/>
+			<frequency frequency="770000" symbolrate="6900"/>
+			<frequency frequency="778000" symbolrate="6900"/>
+			<frequency frequency="786000" symbolrate="6900"/>
+			<frequency frequency="802000" symbolrate="6900"/>
+			<frequency frequency="810000" symbolrate="6900"/>
+			<frequency frequency="818000" symbolrate="6900"/>
+			<frequency frequency="826000" symbolrate="6900"/>
+			<frequency frequency="834000" symbolrate="6900"/>
+			<frequency frequency="842000" symbolrate="6900"/>
+			<frequency frequency="850000" symbolrate="6900"/>
+			<frequency frequency="858000" symbolrate="6900"/>
+		</frequencies>
+		<frequencies name="Germany - NRW (ish TV)">
+			<frequency frequency="346000" symbolrate="6900"/>
+			<frequency frequency="354000" symbolrate="6900"/>
+			<frequency frequency="362000" symbolrate="6900"/>
+			<frequency frequency="370000" symbolrate="6900"/>
+			<frequency frequency="378000" symbolrate="6900"/>
+			<frequency frequency="386000" symbolrate="6900"/>
+			<frequency frequency="394000" symbolrate="6900"/>
+			<frequency frequency="402000" symbolrate="6900"/>
+			<frequency frequency="410000" symbolrate="6900"/>
+			<frequency frequency="426000" symbolrate="6900"/>
+			<frequency frequency="434000" symbolrate="6900"/>
+			<frequency frequency="442000" symbolrate="6900"/>
+		</frequencies>
+	</network>
+	<network name="ATSC"/>
+</networks>

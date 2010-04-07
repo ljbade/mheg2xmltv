@@ -5,15 +5,16 @@
 
 - implement ATSC tuning and parsing.
 
-- implement DVB-S DisEqC. 
+- implement DVB-S DisEqC. This will propably need additional Code for the Frequency
+  List.
 
 - add CI Support. (still no idea how to do that ...)
 
 - add recording to MPEG. (Need to write a Multiplexer for that)
 
-- add filtered TS recording.
-
 - extend the WMP Plugin to control/display EPG, Teletext ...
+
+- Add TV Anytime ?
 
 - Add dynamic PMT remapping upon changes from the Provider.
 
